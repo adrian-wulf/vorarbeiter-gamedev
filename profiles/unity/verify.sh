@@ -7,7 +7,7 @@ UNITY="${UNITY:-unity-editor}"
 command -v "$UNITY" >/dev/null || [[ -x "$UNITY" ]] || { echo "Ustaw UNITY=/ścieżka/do/Unity (np. ~/Unity/Hub/Editor/<wersja>/Editor/Unity)" >&2; exit 1; }
 rc=0
 for platform in EditMode PlayMode; do
-  xml="$(mktemp --suffix=.xml)"; log="$(mktemp)"
+  xml="$(mktemp -d)/results.xml"; log="$(mktemp)"
   "$UNITY" -batchmode -nographics -projectPath . -runTests -testPlatform "$platform" \
     -testResults "$xml" -logFile "$log"; code=$?
   if grep -Eq 'error CS[0-9]+' "$log"; then
@@ -20,5 +20,6 @@ for platform in EditMode PlayMode; do
   failed=$(grep -o 'failed="[0-9]*"' "$xml" | head -1 | grep -o '[0-9]*')
   echo "$platform: ${total:-?} testów, ${failed:-?} nieudanych"
   [[ "${failed:-1}" == 0 ]] || rc=1
+  [[ "${total:-0}" -gt 0 ]] || { echo "Brak testów $platform — nie ma czego zweryfikować."; rc=1; }
 done
 exit $rc

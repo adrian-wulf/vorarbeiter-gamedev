@@ -3,7 +3,7 @@
 > Ten plik czytasz jako pierwszy, zanim zaczniesz jakąkolwiek pracę nad projektem.
 > Zawiera podstawowe zasady, strukturę i to, czego NIE wolno robić bez pytania.
 >
-> <!-- Wypełnia /kickoff. Dopóki są tu placeholdery {{…}}, projekt nie ma dokumentów. -->
+> <!-- kickoff: wypełnij wszystkie pola w podwójnych nawiasach klamrowych i usuń ten komentarz. -->
 
 ## Czym jest ten projekt
 
@@ -44,8 +44,10 @@ Pełny opis mechanik: patrz `GDD.md`.
 - **Trzymaj się `CODING_STYLE.md`** — nie wprowadzaj własnych konwencji.
 - **Teksty dla gracza** (nazwy, komunikaty, opisy) — zgodnie z tonem z `GDD.md`
   i nazwami z `GLOSSARY.md`.
-- **Istotne decyzje projektowe** zapisuj w `DECISIONS.md` (co, dlaczego,
-  jakie były alternatywy).
+- **Istotne decyzje projektowe** opisz w raporcie (sekcja „Czego NIE
+  zrobiono / wątpliwości”: co, dlaczego, jakie były alternatywy) — kierownik
+  wpisze je do `DECISIONS.md`. Nie edytuj dokumentów, jeśli zlecenie tego
+  wprost nie obejmuje.
 - **Nie usuwaj i nie nadpisuj assetów** bez potwierdzenia.
 - Jeśli czegoś brakuje w dokumentacji, żeby wykonać zadanie — napisz to
   w raporcie, zamiast zgadywać.

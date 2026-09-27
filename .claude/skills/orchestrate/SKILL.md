@@ -24,7 +24,7 @@ Nie piszesz kodu sam (CLAUDE.md, reguła 1).
 
 ## Dla każdego zadania
 
-1. **Stan PRZED:** `bash executor/verify.sh > .executor-logs/<ID>-before.txt 2>&1`
+1. **Stan PRZED:** `mkdir -p .executor-logs && bash executor/verify.sh > .executor-logs/<ID>-before.txt 2>&1`
    — zanotuj liczbę testów i metryki, których zadanie może dotknąć.
 2. **Zlecenie:** zapisz `.executor-logs/<ID>-p<n>.brief.md` wg kontraktu
    z `ORCHESTRATION.md` §3. Wskaż konkretne sekcje dokumentów. W próbie > 1
@@ -41,10 +41,12 @@ Nie piszesz kodu sam (CLAUDE.md, reguła 1).
    Porównaj z `<ID>-before.txt`. Dla UI: uruchom w oknie i zrób zrzut
    (sposób: `ARCHITECTURE.md` → „Środowisko agenta”).
 6. **Wynik:**
-   - ✅ spełnione → `git add` tylko plików z zakresu → commit
-     `<ID>: <opis> — via <wykonawca>, zweryfikowane` (+ stopka
-     Co-Authored-By, jeśli projekt jej używa) → w stanie: historia,
-     „Ukończone zadania” z hashem, licznik prób 0 → następne zadanie.
+   - ✅ spełnione → NAJPIERW aktualizacja stanu (historia próby,
+     „Ukończone zadania”, licznik prób 0, ewentualnie DECISIONS/SYSTEMS),
+     POTEM `git add` plików z zakresu + `ORCHESTRATION_STATE.md` (i innych
+     zmienionych dokumentów) → jeden commit
+     `<ID>: <opis> — via <wykonawca>, zweryfikowane`. Po commicie drzewo
+     robocze jest czyste — to warunek startu następnego zadania.
    - ❌ niespełnione → próba + 1, wpis w historii (co zlecono / co wyszło /
      co nie tak). Próba < 4 → wróć do 2 z konkretnym feedbackiem.
      Próba = 4 → „zablokowane”, pełny opis problemu, STOP.

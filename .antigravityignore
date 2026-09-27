@@ -1,5 +1,2 @@
-.executor-logs/
-.claude/
-docs-templates/
-profiles/
-tests/
+/.executor-logs/
+/.claude/

@@ -90,8 +90,9 @@ DLA każdego zadania z kolejki w ORCHESTRATION_STATE.md:
  4. Uruchom `executor/run.sh` (tryb write) i obsłuż kod wyjścia (§2).
  5. NIE UFAJ raportowi. Zweryfikuj sam (§5).
  6. Kryterium spełnione →
-      - commit: `<ID>: <opis> — via <wykonawca>, zweryfikowane`
       - stan: zadanie → ukończone, licznik prób → 0, wpis w historii
+      - jeden commit (kod + ORCHESTRATION_STATE.md + zmienione dokumenty):
+        `<ID>: <opis> — via <wykonawca>, zweryfikowane` → drzewo czyste
       - następne zadanie.
  7. Kryterium NIE spełnione →
       - próba + 1, wpis w historii (co zlecono, co wyszło, co nie tak)

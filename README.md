@@ -200,16 +200,18 @@ Szablon ma dwa profile w `profiles/`. Po wyborze silnika w `/kickoff` właściwy
 
 ## 🔁 Podmiana wykonawcy
 
-Cała komunikacja z wykonawcą idzie przez jeden skrypt `executor/run.sh`. Zmiana wykonawcy to jedna linia w `executor/config.sh` albo zmienna środowiskowa:
+Cała komunikacja z wykonawcą idzie przez jeden skrypt `executor/run.sh`. Zmiana wykonawcy to jedna linia w `executor/config.sh`:
 
 ```bash
-EXECUTOR=codex bash executor/preflight.sh
+EXECUTOR="${EXECUTOR:-codex}"     # executor/config.sh
+bash executor/preflight.sh        # sprawdzenie nowego wykonawcy
 ```
+*(Zmienna środowiskowa `EXECUTOR=…` też działa, ale musi być wyeksportowana przed uruchomieniem `claude`.)*
 
 | Wykonawca | Status |
 | :--- | :--- |
 | `agy` (Antigravity CLI) | ✅ domyślny, zweryfikowany |
-| `codex` (OpenAI Codex CLI) | ⚠️ wywołanie zweryfikowane (flagi, sandbox, kody wyjścia); pełny cykl zależy od Twojego providera |
+| `codex` (OpenAI Codex CLI) | ⚠️ flagi i ścieżka błędu zweryfikowane; pełny cykl zależy od Twojego providera |
 | `gemini` (Gemini CLI) | ⚠️ niezweryfikowany na żywo |
 
 Kody wyjścia `run.sh`: `0` OK · `1` błąd · `3` wyczerpany limit (pętla staje bez commita) · `4` brak logowania.
@@ -229,7 +231,7 @@ ORCHESTRATION_STATE.md    stan: kickoff, kolejka, historia prób, lekcje
 executor/                 run.sh, preflight.sh, verify.sh, rules.md, config.sh
 docs-templates/           szablony dokumentów (usuwane po /kickoff)
 profiles/godot|unity/     profile silników (usuwane po /kickoff)
-tests/                    testy samego szablonu: bash tests/run_all.sh
+tests/                    testy samego szablonu: bash tests/run_all.sh (usuwane po /kickoff)
 ```
 
 ---

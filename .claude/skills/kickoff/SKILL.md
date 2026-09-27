@@ -32,6 +32,10 @@ między sesjami — piszesz je dla agenta LLM, nie dla prezentacji.
 5. Po zapisaniu dokumentu: 3–5 zdań podsumowania najważniejszych ustaleń
    + pytanie „Kontynuować do <Y>.md?”. Aktualizujesz `## Kickoff`
    w `ORCHESTRATION_STATE.md` i tabelę statusu w `AGENTS.md`.
+5a. **Po każdej paczce odpowiedzi** dopisujesz ustalenia (jedna linia
+   na ustalenie) do `### Ustalenia` pod `## Kickoff`
+   w `ORCHESTRATION_STATE.md` — także w fazach 1–3, zanim powstanie
+   jakikolwiek dokument. To jedyne, co ratuje rozmowę przerwaną w połowie.
 6. **Jeden dokument naraz.** Nie piszesz kilku dokumentów w jednej turze.
 7. Dokumenty tworzysz z szablonów w `docs-templates/` (CODING_STYLE —
    z profilu silnika). Zastępujesz wszystkie `{{…}}` i usuwasz komentarze
@@ -41,9 +45,17 @@ między sesjami — piszesz je dla agenta LLM, nie dla prezentacji.
    z wcześniejszych ustaleń — nie pytaj, zapisz.
 9. Rozmawiasz po polsku, konkretnie, bez lania wody.
 
+## Start
+
+Najpierw sprawdź `command -v jq` — bez jq hook ochronny blokuje każdą
+edycję; poproś wtedy o instalację jq, zanim zaczniesz. Następnie utwórz
+`DECISIONS.md` z `docs-templates/DECISIONS.md` (zostaw tylko nagłówek
+i wstęp) — wpisy decyzji dopisujesz w nim od pierwszej paczki pytań.
+
 ## Wznawianie
 
-Na starcie przeczytaj `## Kickoff` w `ORCHESTRATION_STATE.md`. Jeśli faza
+Na starcie przeczytaj `## Kickoff` (w tym `### Ustalenia`)
+w `ORCHESTRATION_STATE.md`. Jeśli faza
 lub któryś dokument są już zrobione — powiedz krótko, na czym skończyliście,
 i kontynuuj od pierwszego ⬜. Nie powtarzaj pytań, na które są już
 odpowiedzi w dokumentach.
@@ -90,8 +102,8 @@ i w ARCHITECTURE.md. Profil drugiego silnika zostanie usunięty na końcu.
 
 ## Faza 4 — Dokumenty (po kolei)
 
-Kolejność: `DECISIONS.md` (zakładasz od razu na starcie fazy — wpisy
-z faz 1–3), potem:
+`DECISIONS.md` już istnieje (założony na starcie, z wpisami z faz 1–3).
+Kolejność pozostałych:
 
 | # | Dokument | Szablon | O co pytać (przykłady) |
 |---|---|---|---|
@@ -118,10 +130,20 @@ informacje z `profiles/<s>/SETUP.md` i `profiles/<s>/ui-check.md`
 2. `bash executor/preflight.sh` — wynik wpisz do `## Wykonawca`
    w `ORCHESTRATION_STATE.md` (wykonawca, wersja, model, data).
    Jeśli NIEGOTOWE — powiedz dokładnie, co naprawić, i poczekaj.
-3. Sprzątanie szablonu:
+3. Licencja projektu — zapytaj (AskUserQuestion): „Na jakiej licencji
+   ma być projekt?” → „Zamknięty (bez licencji)” / „MIT na moje nazwisko”
+   / „Inna — podam”. `LICENSE` szablonu dotyczy szablonu, nie gry.
+4. Sprzątanie szablonu (pliki szablonu nie mogą zostać w projekcie):
    ```bash
-   git rm -r -q profiles/ docs-templates/
+   git rm -r -q profiles/ docs-templates/ tests/ README.en.md LICENSE
    ```
-4. Commit: `docs: kickoff — komplet dokumentów projektu`.
-5. Ustaw `## Kickoff` → „Faza: zakończony”. Zaproponuj `/plan-milestone`
-   dla M0.
+   - `README.md` zastąp krótkim README projektu (tytuł, pitch z GDD, jak
+     uruchomić z ARCHITECTURE, stopka „Projekt prowadzony metodą
+     Vorarbeiter — Claude Code nadzoruje, agy koduje” z linkiem do
+     szablonu). Bez odznak wsparcia, Impressum i danych autora szablonu.
+   - `LICENSE` — nowy wg odpowiedzi z kroku 3 (albo brak pliku).
+   - `NOTICE` zostaje (atrybucja skilla antigravity-agents).
+5. Commit: `docs: kickoff — komplet dokumentów projektu`.
+6. Ustaw `## Kickoff` → „Faza: zakończony”. Uprzedź, że `executor/verify.sh`
+   jest czerwony, dopóki w projekcie nie ma pierwszego testu — pierwsze
+   zadanie M0 musi go dodać. Zaproponuj `/plan-milestone` dla M0.

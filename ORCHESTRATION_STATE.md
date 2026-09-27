@@ -11,6 +11,11 @@ Faza: pomysł → pierwsze 5 minut → silnik → dokumenty → setup wykonawcy.
 
 - Faza: nierozpoczęty
 
+### Ustalenia
+
+<!-- /kickoff: po każdej paczce pytań — jedna linia na ustalenie (koncept, grupa docelowa, ton,
+pierwsze 5 minut w skrócie, silnik…). Dzięki temu przerwany wywiad da się wznowić. -->
+
 ## Wykonawca
 
 <!-- Uzupełnia /kickoff po executor/preflight.sh. -->
@@ -45,4 +50,4 @@ co zlecono, co zwrócił wykonawca, co zweryfikowano, wynik. -->
 
 ## Ukończone zadania
 
-<!-- Jedna linia na zadanie: - [x] <ID>: opis — commit <hash> -->
+<!-- Jedna linia na zadanie: - [x] <ID>: opis. Commit znajdziesz przez: git log --grep "<ID>:" -->

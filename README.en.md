@@ -202,16 +202,18 @@ The template ships two profiles in `profiles/`. Once you pick an engine in `/kic
 
 ## 🔁 Swapping the executor
 
-All communication with the executor goes through a single script, `executor/run.sh`. Switching executors is one line in `executor/config.sh` or an environment variable:
+All communication with the executor goes through a single script, `executor/run.sh`. Switching executors is one line in `executor/config.sh`:
 
 ```bash
-EXECUTOR=codex bash executor/preflight.sh
+EXECUTOR="${EXECUTOR:-codex}"     # executor/config.sh
+bash executor/preflight.sh        # check the new executor
 ```
+*(An `EXECUTOR=…` environment variable works too, but it must be exported before starting `claude`.)*
 
 | Executor | Status |
 | :--- | :--- |
 | `agy` (Antigravity CLI) | ✅ default, verified |
-| `codex` (OpenAI Codex CLI) | ⚠️ invocation verified (flags, sandbox, exit codes); the full cycle depends on your provider |
+| `codex` (OpenAI Codex CLI) | ⚠️ flags and error path verified; the full cycle depends on your provider |
 | `gemini` (Gemini CLI) | ⚠️ not verified live |
 
 `run.sh` exit codes: `0` OK · `1` error · `3` quota exhausted (the loop stops without committing) · `4` not logged in.
@@ -231,7 +233,7 @@ ORCHESTRATION_STATE.md    state: kickoff, queue, attempt history, lessons
 executor/                 run.sh, preflight.sh, verify.sh, rules.md, config.sh
 docs-templates/           document templates (removed after /kickoff)
 profiles/godot|unity/     engine profiles (removed after /kickoff)
-tests/                    tests of the template itself: bash tests/run_all.sh
+tests/                    tests of the template itself: bash tests/run_all.sh (removed after /kickoff)
 ```
 
 ---
