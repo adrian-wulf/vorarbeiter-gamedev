@@ -1,4 +1,4 @@
-# 🦺 Brygadzista — Gamedev
+# 🦺 Vorarbeiter — Gamedev
 
 <p align="center">
   🌐 <strong>Języki / Languages:</strong>
@@ -32,8 +32,8 @@
 ---
 
 ## 📑 Table of Contents
-1. [⚡ Why Brygadzista?](#-why-brygadzista)
-2. [📊 Comparison: Claude codes alone vs Brygadzista](#-comparison-claude-codes-alone-vs-brygadzista)
+1. [⚡ Why Vorarbeiter?](#-why-vorarbeiter)
+2. [📊 Comparison: Claude codes alone vs Vorarbeiter](#-comparison-claude-codes-alone-vs-vorarbeiter)
 3. [🏗️ How it works](#️-how-it-works)
 4. [🚀 Quick Start](#-quick-start)
 5. [🧭 Commands](#-commands)
@@ -47,14 +47,14 @@
 
 ---
 
-## ⚡ Why Brygadzista?
+## ⚡ Why Vorarbeiter?
 
-*Brygadzista* is Polish for “foreman”. Building a game with an LLM agent usually breaks on three things:
+*Vorarbeiter* is German for “foreman”. Building a game with an LLM agent usually breaks on three things:
 1. **The agent forgets everything between sessions** — without documents it guesses what we're building and introduces inconsistencies.
 2. **The strongest model is expensive** — when Claude writes every line itself, a Pro plan's limit is gone after a few tasks.
 3. **The cheap model is overconfident** — it reports “done”, and the test passes because… it lowered an assertion threshold.
 
-**Brygadzista fixes this by splitting the roles:**
+**Vorarbeiter fixes this by splitting the roles:**
 * **Claude Code = the lead.** Talks with you about the game, writes the docs, plans milestones, writes precise work orders and **verifies** every result itself (diff, tests, running the game in a window, BEFORE/AFTER comparison).
 * **agy (Gemini Flash) = the executor.** Fast and cheap — writes all the code from the work orders.
 * **A hook, not a promise.** The “lead doesn't write code” rule is enforced by a Claude Code hook — an attempt to edit a `.gd`/`.cs` file is refused.
@@ -65,9 +65,9 @@ The method was born while producing a real game (colony sim + factory automation
 
 ---
 
-## 📊 Comparison: Claude codes alone vs Brygadzista
+## 📊 Comparison: Claude codes alone vs Vorarbeiter
 
-| Aspect | Claude Code writes the code | 🦺 **Brygadzista** |
+| Aspect | Claude Code writes the code | 🦺 **Vorarbeiter** |
 | :--- | :---: | :---: |
 | **Who writes code** | Expensive model (Opus/Sonnet) | **Cheap executor** (agy / Gemini Flash) |
 | **What Claude's tokens pay for** | Every line of code | **Planning and verification** |
@@ -131,7 +131,7 @@ flowchart TD
 
 ### 1. Create a project from the template
 ```bash
-gh repo create my-game --private --template adrian-wulf/brygadzista-gamedev --clone
+gh repo create my-game --private --template adrian-wulf/vorarbeiter-gamedev --clone
 cd my-game
 ```
 *(or the **Use this template** button on GitHub)*
@@ -240,11 +240,11 @@ tests/                    tests of the template itself: bash tests/run_all.sh (r
 
 ## 🌐 Adrian Wulf's Ecosystem
 
-Brygadzista is part of a family of independent, efficient tools built in the spirit of **RobinHood dev** — no subscriptions, no corporate overhead:
+Vorarbeiter is part of a family of independent, efficient tools built in the spirit of **RobinHood dev** — no subscriptions, no corporate overhead:
 
 | Service / Project | URL | Purpose |
 | :--- | :---: | :--- |
-| 🦺 **Brygadzista — Code** | [github.com/adrian-wulf/brygadzista-code](https://github.com/adrian-wulf/brygadzista-code) | **Twin template** for any software project (PRD instead of GDD). |
+| 🦺 **Vorarbeiter — Code** | [github.com/adrian-wulf/vorarbeiter-code](https://github.com/adrian-wulf/vorarbeiter-code) | **Twin template** for any software project (PRD instead of GDD). |
 | 🛡️ **Nachtwache** | [github.com/adrian-wulf/nachtwache](https://github.com/adrian-wulf/nachtwache) | **Error guardian:** lightweight drop-in Sentry replacement with AI Auto-Fix (~15 MB RAM). |
 | 🚀 **Wulf Lead.er** | [lead.social-wulf.eu](https://lead.social-wulf.eu) | **B2B Lead Generator & OSINT Auditor:** client acquisition, SEO/Core Web Vitals audits. |
 | 🌐 **Central Wulf Hub** | [social-wulf.eu](https://social-wulf.eu) | **Ecosystem hub:** project showcase and business tools. |
@@ -262,13 +262,13 @@ Brygadzista is part of a family of independent, efficient tools built in the spi
 ### What is RobinHood dev?
 > **“Modern engineering tools, production stability and the freedom to ship software should not be a luxury reserved for corporations with gigantic budgets.”**
 
-Building games with AI has become a budget race: whoever pays for the most expensive plan ships. Brygadzista flips that logic:
+Building games with AI has become a budget race: whoever pays for the most expensive plan ships. Vorarbeiter flips that logic:
 * The expensive model does only what it's irreplaceable at — **understanding, planning and checking**. Code is written by a cheap or free model.
 * The method, documents and loop are 100% open — no hidden paywalls, “pro” editions or telemetry.
 * A solo dev on a Pro plan can run a project like a small team with a lead and an executor.
 
 ### How can you help?
-If Brygadzista helped you ship a game or saved your plan's limits — chip in:
+If Vorarbeiter helped you ship a game or saved your plan's limits — chip in:
 * ☕ **Buy a virtual coffee:** [buymeacoffee.com/adrianwulf](https://buymeacoffee.com/adrianwulf)
 * 💖 **Support on GitHub Sponsors:** [github.com/sponsors/adrian-wulf](https://github.com/sponsors/adrian-wulf)
 * ⭐ **Star the repo:** help the template reach more creators.
