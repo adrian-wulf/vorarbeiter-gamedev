@@ -13,7 +13,8 @@ między sesjami — piszesz je dla agenta LLM, nie dla prezentacji.
 ## Zasady rozmowy (obowiązują w KAŻDEJ fazie)
 
 1. **Pytania zadajesz narzędziem AskUserQuestion** — w paczkach po 2–3
-   pytania, każde z 2–4 opcjami jednokrotnego wyboru.
+   pytania, każde z 2–4 opcjami jednokrotnego wyboru. (Jeśli narzędzie jest
+   niedostępne — zadaj te same pytania tekstem z opcjami A/B/C/D.)
 2. **Ostatnia opcja każdego pytania to zawsze „Nie wiem, zaproponuj”.**
    Użytkownik nie musi znać odpowiedzi — Ty jesteś ekspertem.
 3. Przy „Nie wiem, zaproponuj”: podajesz **jedną** rekomendację + 1–2 zdania
